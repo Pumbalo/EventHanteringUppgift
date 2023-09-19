@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\simon\\Desktop\\Skola-år-2\\EventHanteringUppgift\\EventHanteringUppgift.csproj": {}
+    "C:\\Users\\jonat\\Desktop\\Aktuella program\\EventHanteringUppgift\\EventHanteringUppgift.csproj": {}
   },
   "projects": {
-    "c:\\Users\\simon\\Desktop\\Skola-år-2\\EventHanteringUppgift\\EventHanteringUppgift.csproj": {
+    "C:\\Users\\jonat\\Desktop\\Aktuella program\\EventHanteringUppgift\\EventHanteringUppgift.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\simon\\Desktop\\Skola-år-2\\EventHanteringUppgift\\EventHanteringUppgift.csproj",
+        "projectUniqueName": "C:\\Users\\jonat\\Desktop\\Aktuella program\\EventHanteringUppgift\\EventHanteringUppgift.csproj",
         "projectName": "EventHanteringUppgift",
-        "projectPath": "c:\\Users\\simon\\Desktop\\Skola-år-2\\EventHanteringUppgift\\EventHanteringUppgift.csproj",
-        "packagesPath": "C:\\Users\\simon\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\simon\\Desktop\\Skola-år-2\\EventHanteringUppgift\\obj\\",
+        "projectPath": "C:\\Users\\jonat\\Desktop\\Aktuella program\\EventHanteringUppgift\\EventHanteringUppgift.csproj",
+        "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jonat\\Desktop\\Aktuella program\\EventHanteringUppgift\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\simon\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -47,6 +49,8 @@
               "version": "[7.0.11, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.11, )"
             }
@@ -70,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

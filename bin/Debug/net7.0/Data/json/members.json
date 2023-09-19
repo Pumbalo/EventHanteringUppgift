@@ -1,0 +1,35 @@
+[
+    {
+        "memberid": "c13ac5cc-e459-4879-9d86-7dc721fd5916",
+        "firstName": "Jacob",
+        "lastName": "Karlström",
+        "socialSecurityNumber": "1994-03-04-3021",
+        "userName": "Jacobkarlstrom@gmail.com",
+        "eventId": "232ec7b5-e075-4b1c-b3f7-5237d600a2ff"
+        
+    },
+    {
+        "memberid": "02f6da4a-e71d-4868-9821-7012bf0a1ccc",
+        "firstName": "Sofia",
+        "lastName": "Gustafsson",
+        "socialSecurityNumber": "1996-01-06-4242",
+        "userName": "sofia@gmail.se",
+        "eventId": "232ec7b5-e075-4b1c-b3f7-5237d600a2ff"
+    },
+    {
+        "memberid": "58b5b438-d09b-4852-ac6f-8d8ec4717d48",
+        "firstName": "Sara",
+        "lastName": "Kallbäck",
+        "socialSecurityNumber": "1985-03-17-4231",
+        "userName": "Sarakallback@gmail.com",
+        "eventId": "80966b4b-9baa-4628-862a-acf5ccff27a8"
+    },
+    {
+        "memberid": "5bc654e1-c6ea-4dd7-aaa1-b2eef1504528",
+        "firstName": "Albert",
+        "lastName": "Hjalmarsson",
+        "socialSecurityNumber": "1998-05-28-3151",
+        "userName": "albert@gmail.com",
+        "eventId": "80966b4b-9baa-4628-862a-acf5ccff27a8"
+    }
+]

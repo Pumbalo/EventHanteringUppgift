@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\EventHanteringUppgift.props" />
+</Project>
