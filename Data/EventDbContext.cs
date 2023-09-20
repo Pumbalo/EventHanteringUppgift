@@ -16,17 +16,23 @@ public class EventDbContext: DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // Sätt upp sammansatt primärnyckel som består av EventId och MemberId...
-        modelBuilder.Entity<MemberEvent>() //StudentCourse = MemberEvent
+        // Configure EventId as the primary key with Guid type
+        modelBuilder.Entity<Event>()
+            .Property(e => e.EventId)
+            .ValueGeneratedOnAdd()
+            .IsRequired();
+
+        // Sammansatt primärnyckel som består av EventId och MemberId...
+        modelBuilder.Entity<MemberEvent>()
             .HasKey(sc => new{sc.EventId, sc.MemberId});
         
-        // Sätt upp förhållandet att en member kan vara anmäld på flera events...
+        // Förhållandet  för att en member kan vara anmäld på flera events...
         modelBuilder.Entity<MemberEvent>()
             .HasOne(sc => sc.Member)
             .WithMany(c => c.MemberEvents)
             .HasForeignKey(sc => sc.MemberId);
 
-        // Sätt upp förhållandet att ett event kan ha flera members...
+        // Förhållandet fär att ett event kan ha flera members...
         modelBuilder.Entity<MemberEvent>()
             .HasOne(sc => sc.Event)
             .WithMany(c => c.MemberEvents)

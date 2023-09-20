@@ -15,7 +15,7 @@ namespace EventHanteringUppgift.Data.Migrations
                 name: "Events",
                 columns: table => new
                 {
-                    EventId = table.Column<string>(type: "TEXT", nullable: false),
+                    EventId = table.Column<Guid>(type: "TEXT", nullable: false),
                     Title = table.Column<string>(type: "TEXT", nullable: true),
                     StartDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Location = table.Column<string>(type: "TEXT", nullable: true),
@@ -30,7 +30,7 @@ namespace EventHanteringUppgift.Data.Migrations
                 name: "Members",
                 columns: table => new
                 {
-                    MemberId = table.Column<string>(type: "TEXT", nullable: false),
+                    MemberId = table.Column<Guid>(type: "TEXT", nullable: false),
                     FirstName = table.Column<string>(type: "TEXT", nullable: true),
                     LastName = table.Column<string>(type: "TEXT", nullable: true),
                     SocialSecurityNumber = table.Column<string>(type: "TEXT", nullable: true),
@@ -45,8 +45,8 @@ namespace EventHanteringUppgift.Data.Migrations
                 name: "MemberEvent",
                 columns: table => new
                 {
-                    EventId = table.Column<string>(type: "TEXT", nullable: false),
-                    MemberId = table.Column<string>(type: "TEXT", nullable: false)
+                    EventId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    MemberId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

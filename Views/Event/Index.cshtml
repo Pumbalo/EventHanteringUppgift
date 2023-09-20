@@ -3,5 +3,15 @@
 @{
     ViewBag.PageTitle = "Events";
 }
-
+<br>
 <h2>Hej</h2>
+<br>
+<br>
+<section>
+    @foreach (var events in Model)
+    {
+        <div>
+            <a asp-action="details" asp-route-eventId=@events.EventId>@events.Title - @events.Location - @events.StartDate</a>
+        </div>
+    }
+</section>

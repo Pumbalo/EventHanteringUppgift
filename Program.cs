@@ -20,8 +20,8 @@ try
     var context = services.GetRequiredService<EventDbContext>();
     await context.Database.MigrateAsync();
 
-    await SeedData.LoadEventData(context);
     await SeedData.LoadMemberData(context);
+    await SeedData.LoadEventData(context);
     await SeedData.LoadMemberEventData(context);
 }
 catch (Exception ex)

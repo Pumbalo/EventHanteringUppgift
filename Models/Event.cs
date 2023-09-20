@@ -5,7 +5,7 @@ namespace EventHanteringUppgift.Models;
 public class Event
 {
     [Key]
-    public string EventId { get; set; } = "";
+    public Guid EventId { get; set; }
     public string Title { get; set; } = "";
     public DateTime StartDate { get; set; }
     public string Location { get; set; } = "";
