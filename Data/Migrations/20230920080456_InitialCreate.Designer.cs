@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventHanteringUppgift.Data.Migrations
 {
     [DbContext(typeof(EventDbContext))]
-    [Migration("20230919125646_InitialCreate")]
+    [Migration("20230920080456_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -22,7 +22,8 @@ namespace EventHanteringUppgift.Data.Migrations
 
             modelBuilder.Entity("EventHanteringUppgift.Models.Event", b =>
                 {
-                    b.Property<string>("EventId")
+                    b.Property<Guid>("EventId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
@@ -44,7 +45,8 @@ namespace EventHanteringUppgift.Data.Migrations
 
             modelBuilder.Entity("EventHanteringUppgift.Models.Member", b =>
                 {
-                    b.Property<string>("MemberId")
+                    b.Property<Guid>("MemberId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FirstName")
@@ -66,10 +68,10 @@ namespace EventHanteringUppgift.Data.Migrations
 
             modelBuilder.Entity("EventHanteringUppgift.Models.MemberEvent", b =>
                 {
-                    b.Property<string>("EventId")
+                    b.Property<Guid>("EventId")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("MemberId")
+                    b.Property<Guid>("MemberId")
                         .HasColumnType("TEXT");
 
                     b.HasKey("EventId", "MemberId");

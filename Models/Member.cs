@@ -5,7 +5,7 @@ namespace EventHanteringUppgift.Models;
 public class Member
 {
     [Key]
-    public string MemberId { get; set; } = "";
+    public Guid MemberId { get; set; }
     public string FirstName { get; set; } = "";
     public string LastName { get; set; } = "";
     public string SocialSecurityNumber { get; set; } = "";
