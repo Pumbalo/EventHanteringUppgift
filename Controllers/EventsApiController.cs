@@ -42,7 +42,7 @@ namespace EventHanteringUppgift.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateEvent(Guid id, [FromBody] Event updatedEvent)
+        public async Task<ActionResult> UpdateEvent(Guid id, EventUpdateViewModel updatedEvent)
         {
             if (!ModelState.IsValid) return BadRequest("Information saknas");
 
