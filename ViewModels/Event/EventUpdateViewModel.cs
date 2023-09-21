@@ -2,8 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EventHanteringUppgift.Controllers;
 
-
-// Behövs denna ens?
+// Behövs denna?
 
 public class EventUpdateViewModel
 {
