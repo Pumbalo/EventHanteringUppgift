@@ -20,7 +20,8 @@ namespace EventHanteringUppgift.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("getallevents")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetAllEvents()
         {
             // TODO: Lista alla events
@@ -28,6 +29,7 @@ namespace EventHanteringUppgift.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetEvent(Guid id)
         {
             // TODO: Lista ett specifikt event
@@ -36,8 +38,10 @@ namespace EventHanteringUppgift.Controllers
 
 
         [HttpPost]
-        // public IActionResult CreateEvent([FromBody] Event newEvent)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateEventAsync([FromBody] Event newEvent)
+
         {
             // TODO: Skapa ett nytt event
 
@@ -55,20 +59,47 @@ namespace EventHanteringUppgift.Controllers
         }
     
         [HttpPut("{id}")]
-        public IActionResult UpdateEvent(Guid id, [FromBody] Event updatedEvent)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> UpdateEvent(Guid id, [FromBody] Event updatedEvent)
         {
-            // TODO: Redigera ett event
-            return Ok();
+            if (!ModelState.IsValid) return BadRequest("Information saknas");
+
+            var events = await _context.Events.FindAsync(id);
+            if (events is null) return BadRequest($"Eventet {updatedEvent.Title} finns inte");
+
+            events.Title = updatedEvent.Title;
+            events.StartDate = updatedEvent.StartDate;
+            events.Location = updatedEvent.Location;
+            events.Description = updatedEvent.Description;
+
+            _context.Events.Update(events);
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                return NoContent();
+            }
+
+            return StatusCode(500, "Internal Server Error");
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteEvent(Guid id)
+        public async Task<ActionResult> DeleteEvent(Guid id)
         {
-            // TODO: Ta bort ett event
-            return Ok();
+            var events = await _context.Events.FindAsync(id);
+            if (events is null) return NotFound($"Finns inget event med id: {id}");
+
+            _context.Events.Remove(events);
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                return NoContent();
+            }
+
+            return StatusCode(500, "Internal Server Error");
         }
 
         [HttpPost("join")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult JoinEvent([FromBody] JoinEventModel model)
         {
             // TODO: Få en användare att gå med i ett event
@@ -76,6 +107,8 @@ namespace EventHanteringUppgift.Controllers
         }
 
         [HttpPost("register")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register()
         {
             // TODO: Registrera ett nytt konto
