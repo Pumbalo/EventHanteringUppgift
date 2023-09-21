@@ -48,17 +48,40 @@ namespace EventHanteringUppgift.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult UpdateEvent(Guid id, [FromBody] Event updatedEvent)
+        public async Task<ActionResult> UpdateEvent(Guid id, [FromBody] Event updatedEvent)
         {
-            // TODO: Redigera ett event
-            return Ok();
+            if (!ModelState.IsValid) return BadRequest("Information saknas");
+
+            var events = await _context.Events.FindAsync(id);
+            if (events is null) return BadRequest($"Eventet {updatedEvent.Title} finns inte");
+
+            events.Title = updatedEvent.Title;
+            events.StartDate = updatedEvent.StartDate;
+            events.Location = updatedEvent.Location;
+            events.Description = updatedEvent.Description;
+
+            _context.Events.Update(events);
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                return NoContent();
+            }
+
+            return StatusCode(500, "Internal Server Error");
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteEvent(Guid id)
+        public async Task<ActionResult> DeleteEvent(Guid id)
         {
-            // TODO: Ta bort ett event
-            return Ok();
+            var events = await _context.Events.FindAsync(id);
+            if (events is null) return NotFound($"Finns inget event med id: {id}");
+
+            _context.Events.Remove(events);
+            if (await _context.SaveChangesAsync() > 0)
+            {
+                return NoContent();
+            }
+
+            return StatusCode(500, "Internal Server Error");
         }
 
         [HttpPost("join")]
