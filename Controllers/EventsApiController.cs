@@ -20,7 +20,8 @@ namespace EventHanteringUppgift.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("getallevents")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetAllEvents()
         {
             // TODO: Lista alla events
@@ -28,6 +29,7 @@ namespace EventHanteringUppgift.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult GetEvent(Guid id)
         {
             // TODO: Lista ett specifikt event
@@ -35,6 +37,8 @@ namespace EventHanteringUppgift.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult CreateEvent([FromBody] Event newEvent)
         {
             // TODO: Skapa ett nytt event
@@ -42,6 +46,8 @@ namespace EventHanteringUppgift.Controllers
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> UpdateEvent(Guid id, EventUpdateViewModel updatedEvent)
         {
             if (!ModelState.IsValid) return BadRequest("Information saknas");
@@ -79,6 +85,8 @@ namespace EventHanteringUppgift.Controllers
         }
 
         [HttpPost("join")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult JoinEvent([FromBody] JoinEventModel model)
         {
             // TODO: Få en användare att gå med i ett event
@@ -86,6 +94,8 @@ namespace EventHanteringUppgift.Controllers
         }
 
         [HttpPost("register")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Register()
         {
             // TODO: Registrera ett nytt konto
