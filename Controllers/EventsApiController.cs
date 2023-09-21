@@ -48,7 +48,7 @@ namespace EventHanteringUppgift.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> UpdateEvent(Guid id, [FromBody] Event updatedEvent)
+        public async Task<ActionResult> UpdateEvent(Guid id, EventUpdateViewModel updatedEvent)
         {
             if (!ModelState.IsValid) return BadRequest("Information saknas");
 

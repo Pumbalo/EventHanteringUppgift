@@ -2,8 +2,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EventHanteringUppgift.Controllers;
 
-// Behövs denna?
-
 public class EventUpdateViewModel
 {
     [Required(ErrorMessage = "Titel måste finnas")]
