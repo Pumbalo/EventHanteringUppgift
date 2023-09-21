@@ -34,13 +34,26 @@ namespace EventHanteringUppgift.Controllers
             return Ok();
         }
 
+
         [HttpPost]
-        public IActionResult CreateEvent([FromBody] Event newEvent)
+        // public IActionResult CreateEvent([FromBody] Event newEvent)
+        public async Task<IActionResult> CreateEventAsync([FromBody] Event newEvent)
         {
             // TODO: Skapa ett nytt event
-            return Ok();
-        }
 
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.Events.Add(newEvent);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetEvent", new { id = newEvent.EventId }, newEvent);
+
+            
+        }
+    
         [HttpPut("{id}")]
         public IActionResult UpdateEvent(Guid id, [FromBody] Event updatedEvent)
         {
