@@ -36,15 +36,28 @@ namespace EventHanteringUppgift.Controllers
             return Ok();
         }
 
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult CreateEvent([FromBody] Event newEvent)
+        public async Task<IActionResult> CreateEventAsync([FromBody] Event newEvent)
+
         {
             // TODO: Skapa ett nytt event
-            return Ok();
-        }
 
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _context.Events.Add(newEvent);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetEvent", new { id = newEvent.EventId }, newEvent);
+
+            
+        }
+    
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
